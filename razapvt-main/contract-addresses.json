@@ -1,0 +1,13 @@
+{
+  "network": "amoy",
+  "chainId": 80002,
+  "deployedAt": "2025-09-16T08:18:01.130Z",
+  "deployer": "0xf792C63150999048CcA6A26D69e05c0F9605b6f3",
+  "contracts": {
+    "ProjectRegistry": "0x331A9336B7855E32B46F78053a963dc7FB6e3281",
+    "CarbonCreditToken": "0x50DB160bb4dfA789D600b5Be7eD80f66993b7620",
+    "UniqueCarbonCreditNFT": "0x8cB6Db9a056D2C9cEaD3860B2035ed0FEDaBE2Db",
+    "PaymentDistributor": "0xC69d14B24D6330fBA0a7527fc0da64199E038a6f",
+    "VerificationOracle": "0x0313771d7FB6A6460D7144eC660E2949eEdd515e"
+  }
+}

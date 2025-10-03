@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: sih-blue-carbon-backend
+    runtime: node
+    plan: starter  # Free tier, upgrade to standard for production
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8001
+      - key: CORS_ORIGIN
+        value: "*"
+      # Database Configuration
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sih-postgres-db
+          property: connectionString
+      # Blockchain Configuration  
+      - key: AMOY_RPC_URL
+        value: https://rpc-amoy.polygon.technology
+      - key: MUMBAI_RPC_URL
+        value: https://rpc-amoy.polygon.technology
+      # IPFS Configuration
+      - key: IPFS_API_URL
+        value: https://ipfs.infura.io:5001
+      # Python Backend Integration
+      - key: PYTHON_BACKEND_URL
+        value: http://localhost:8002
+      # Redis Configuration (optional)
+      - key: REDIS_URL
+        value: redis://localhost:6379
+      # JWT Configuration
+      - key: JWT_SECRET
+        generateValue: true
+      # Email Configuration (optional)
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: 587
+      # Blockchain Private Key (set in Render dashboard)
+      - key: PRIVATE_KEY
+        sync: false  # Set manually in dashboard for security
+
+databases:
+  - name: sih-postgres-db
+    databaseName: blue_carbon_mrv
+    user: blue_carbon_user
+    plan: starter  # Free PostgreSQL instance

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: blue-carbon-mrv-frontend
+    env: static
+    buildCommand: npm install --legacy-peer-deps --force && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: CI
+        value: false
+      - key: GENERATE_SOURCEMAP
+        value: false
+      - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
